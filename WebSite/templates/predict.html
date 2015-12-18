@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Lithe</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+	<link href="static/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="static/style2.css??version=1">
+	<link rel="stylesheet" type="text/css" href="static/css/owl.carousel.css">
+  	<script src="jquery.quovolver.min.js"></script>
+	<!--[if lt IE 9]-->
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+	<header class="main-header" >
+		<div class="backbg-color">
+		<br>
+		<br>
+		<center> {% include 'table.html' %} </center> 
+		</div>
+
+		<script src="static/js/jquery.min.js"></script>
+    	<script src="static/js/bootstrap.min.js"></script>
+		<script src="static/js/jquery-1.11.3.min.js"></script>
+		<script src="static/js/jquery-1.9.1.min.js"></script> 
+    	<script src="static/js/owl.carousel.js"></script>
+    	<script src="static/js/jquery.mixitup.js" type="text/javascript"></script>
+    	<script type="text/javascript" src="static/js/jquery.quovolver.js"></script>
+    	<!--for smooth scrolling-->
+		    	<script>
+			$(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+			    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+			      var target = $(this.hash);
+			      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+			      if (target.length) {
+			        $('html,body').animate({
+			          scrollTop: target.offset().top
+			        }, 1000);
+			        return false;
+			      }
+			    }
+			  });
+			});
+			</script>
+    	<!--demo-->
+    	<script>
+	    $(document).ready(function() {
+	      $("#owl-demo").owlCarousel({
+	        autoPlay: 4000,
+	        items : 4,
+	        itemsDesktop : [1199,3],
+	        itemsDesktopSmall : [979,3]
+	      });
+
+	    });
+
+    	</script>
+
+    	<script type="text/javascript">
+		   
+
+		    $(document).ready(function() {
+		     
+		      var owl = $("#owl-demo");
+		     
+		      owl.owlCarousel();
+		     
+		      // Custom Navigation Events
+		      $(".next").click(function(){
+		        owl.trigger('owl.next');
+		      })
+		      $(".prev").click(function(){
+		        owl.trigger('owl.prev');
+		      })
+		     
+		    });
+
+
+
+
+    	</script>
+    	<!--
+    	<script type="text/javascript">
+		    	$(function(){
+
+			// Instantiate MixItUp:
+
+			$('#Container').mixItUp();
+
+		});
+    	</script>
+    	-->
+    	<script>
+		    		jQuery(function ($) {
+		    // fancybox
+		    $(".fancybox").fancybox({
+		        modal: true, // disable regular nav and close buttons
+		        // add buttons helper (requires buttons helper js and css files)
+		        helpers: {
+		            buttons: {}
+		        } 
+		    });
+		    // filter selector
+		    $(".filter").on("click", function () {
+		        var $this = $(this);
+		        // if we click the active tab, do nothing
+		        if ( !$this.hasClass("active") ) {
+		            $(".filter").removeClass("active");
+		            $this.addClass("active"); // set the active tab
+		            // get the data-rel value from selected tab and set as filter
+		            var $filter = $this.data("rel"); 
+		            // if we select view all, return to initial settings and show all
+		            $filter == 'all' ? 
+		                $(".fancybox")
+		                .attr("data-fancybox-group", "gallery")
+		                .not(":visible")
+		                .fadeIn() 
+		            : // otherwise
+		                $(".fancybox")
+		                .fadeOut(0)
+		                .filter(function () {
+		                    // set data-filter value as the data-rel value of selected tab
+		                    return $(this).data("filter") == $filter; 
+		                })
+		                // set data-fancybox-group and show filtered elements
+		                .attr("data-fancybox-group", $filter)
+		                .fadeIn(1000); 
+		        } // if
+		    }); // on
+		}); // ready
+    	</script>
+    	<!--texitimonial-->
+    	<script>
+
+
+   $('.quotes').quovolver({
+      equalHeight   : true
+    });
+
+    	</script>
+
+	</body>
+</html>
