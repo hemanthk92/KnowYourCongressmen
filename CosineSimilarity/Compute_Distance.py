@@ -11,10 +11,10 @@ def compute_distance():
 	in a text file. Web App reads these text files to show graphs. 
 	'''
 
-	category_map = {1: 'Health Care', 2: 'National Security', 3:'Economy', 4:'Domestic Issues'}
+	category_map = {1: 'Health Care', 2: 'National Security', 3:'Economy', 4:'Environment', 5:'Domestic Issues' }
 	vm = Voting_Matrix('114')
 
-	for j in xrange(1,5):
+	for j in xrange(1,6):
 		votes, member_to_row =  vm.generate_matrix(category = [j])
 		y = pdist(votes, 'cosine')
 		y_dist = squareform(y)
