@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template
 app = Flask(__name__)
-import pandas as pd 
-from mat_gen import Voting_Matrix 
+import pandas as pd  
 from scipy.spatial.distance import pdist, squareform, cosine
 import numpy as np
 from bokeh.plotting import figure, gridplot, output_file, show
@@ -32,7 +31,7 @@ def graph():
 	category = str(request.form['category'])
 	category_value = category_map[category]
 	selected_member = str(request.form['person']) 
-	df_members = pd.read_csv('../DataCollectionInsertion/Members/114Members.csv')
+	df_members = pd.read_csv('../data/114Members.csv')
 	row = df_members[df_members['person__name'] == selected_member]['row_nums'].iloc[0]
 
 	democrats = [(df_members.iloc[i]['person__id'], df_members.iloc[i]['row_nums'], df_members.iloc[i]['person__name']) \
@@ -45,8 +44,8 @@ def graph():
 	democrats_names = [democrat[2] for democrat in democrats]
 	republicans_names = [republican[2] for republican in republicans]
 
-	distances = np.loadtxt('../CosineSimilarity/data/' + category + '114Distance.csv', delimiter=',')
-
+	distances = np.loadtxt('../data/' + category + '114Distance.csv', delimiter=',')
+	
 	member_title = selected_member
 
 	source1 = ColumnDataSource(\
@@ -101,7 +100,7 @@ def predict():
 	person_name = str(request.form['person_predict'])
 	df_pred = pd.read_csv('data/nmf_114predictions.csv')
 
-	df_members = pd.read_csv('../DataCollectionInsertion/Members/114Members.csv')
+	df_members = pd.read_csv('../data/114Members.csv')
 	member_id = df_members[df_members['person__name'] == person_name]['person__id'].iloc[0]
 	
 	missing_votes = df_pred[df_pred['Member'] == member_id][['Bill', 'Link', 'Vote', 'Question']]
