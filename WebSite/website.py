@@ -8,7 +8,7 @@ from bokeh.models import HoverTool, CrosshairTool
 from bokeh.plotting import *
 from bokeh.embed import autoload_static
 import random
-
+import os
 # home page
 @app.route('/')
 def index():
@@ -84,7 +84,8 @@ def graph():
 	p.background_fill = "beige"
 	p.xaxis.visible = None
 	
-	save(p, "/Users/HemanthKondapalli/KnowYourCongressMen/WebSite/templates/fig.html")
+	directory_to_save = os.getcwd() + '/templates/fig.html'
+	save(p, directory_to_save)
 	
 	return render_template('graph.html') 
 
@@ -117,4 +118,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+	port = int(os.environ.get("PORT", 5000))
+	app.run(debug=True, host='0.0.0.0', port=port)
